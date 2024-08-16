@@ -6,6 +6,10 @@ on:
       - main
       - development
 
+env:
+  REGISTRY: projects
+  IMAGE_NAME: my-new-nodejs-app
+
 permissions:
   contents: read
   pages: write
