@@ -45,6 +45,10 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
+    env:
+      REGISTRY: docker.io
+      IMAGE_NAME: omkarsathe01/projects
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -71,12 +75,12 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      # - name: Generate artifact attestation
-      #   uses: actions/attest-build-provenance@v1
-      #   with:
-      #     # subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
-      #     subject-digest: ${{ steps.push.outputs.digest }}
-      #     push-to-registry: true
+      - name: Generate artifact attestation
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
 
       - name: Image digest
         run: echo ${{ steps.push.outputs.digest }}
