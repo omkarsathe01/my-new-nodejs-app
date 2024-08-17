@@ -6,10 +6,6 @@ on:
       - main
       - development
 
-env:
-  REGISTRY: projects
-  IMAGE_NAME: my-new-nodejs-app
-
 permissions:
   contents: read
   pages: write
@@ -47,7 +43,7 @@ jobs:
 
     env:
       REGISTRY: docker.io
-      IMAGE_NAME: omkarsathe01/projects
+      IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/projects/my-new-nodejs-app
 
     steps:
       - name: Checkout repository
@@ -63,7 +59,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: omkarsathe01/projects
+          images: ${{ secrets.DOCKER_USERNAME }}/projects/my-new-nodejs-app
 
       - name: Build and push Docker image
         id: push
