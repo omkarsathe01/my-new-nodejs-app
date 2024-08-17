@@ -24,10 +24,6 @@ jobs:
     name: "Status of Terraform Infrastructure"
     runs-on: ubuntu-latest
 
-    if: ${{ always() && contains(join(needs.*.result, ','), 'success') }}
-    needs:
-      - coverage
-
     env:
       # verbosity setting for Terraform logs
       TF_LOG: INFO
@@ -43,6 +39,10 @@ jobs:
         working-directory: ./terraform
 
     steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: Checkout
+        uses: actions/checkout@v2
+
       # Install the specified version of Terraform CLI and configure the Terraform CLI configuration file
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
