@@ -1,15 +1,11 @@
-name: "Unit test the code"
+name: "Run Unit Tests Generate Coverage Report Build and Push Docker Image"
 
 on:
   push:
     branches:
       - main
-      # - development
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
   attestations: write
 
 jobs:
