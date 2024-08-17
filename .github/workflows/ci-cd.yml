@@ -43,7 +43,7 @@ jobs:
 
     env:
       REGISTRY: docker.io
-      IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/projects/my-new-nodejs-app
+      IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/projects
 
     steps:
       - name: Checkout repository
