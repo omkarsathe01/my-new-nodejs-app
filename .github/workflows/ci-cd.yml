@@ -10,7 +10,7 @@ permissions:
   attestations: write
 
 jobs:
-  unit-test:
+  test-build-push:
     runs-on: ubuntu-latest
 
     env:
