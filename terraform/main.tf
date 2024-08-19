@@ -190,7 +190,7 @@ resource "aws_ecs_capacity_provider" "ecs_capacity_provider" {
 }
 
 resource "aws_ecs_cluster_capacity_providers" "ecs_cluster_capacity_providers" {
-  cluster_name = aws_ecs_cluster.ecs_cluster.name
+  cluster_name = ecs_cluster.ecs_cluster.name
 
   capacity_providers = [aws_ecs_capacity_provider.ecs_capacity_provider.name]
 
