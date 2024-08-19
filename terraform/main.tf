@@ -149,7 +149,7 @@ resource "aws_alb" "ecs_alb" {
 
 resource "aws_lb_target_group" "ecs_tg" {
   name        = "ecs-target-group"
-  port        = 80
+  port        = 3000
   protocol    = "HTTP"
   target_type = "ip"
   vpc_id      = aws_vpc.main.id
@@ -161,7 +161,7 @@ resource "aws_lb_target_group" "ecs_tg" {
 
 resource "aws_alb_listener" "ecs_alb_listener" {
   load_balancer_arn = aws_alb.ecs_alb.arn
-  port              = 80
+  port              = 3000
   protocol          = "HTTP"
 
   default_action {
